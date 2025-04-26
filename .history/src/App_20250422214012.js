@@ -11,13 +11,22 @@ export default function AgencyLandingPage() {
       text: 'Working with Kayacancode was the smartest move we made. The systems just work, and the execution was fast, flexible, and founder-friendly.',
       video: 'https://kayarjones901.wistia.com/medias/ka9fvaqeth'
     },
-  
+    {
+      author: 'Alex Rivera, CEO @ BuildFlow',
+      text: null,
+      video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    },
+    {
+      author: 'Jamie Tran, Product @ FinLaunch',
+      text: 'Kaya helped us hit our MVP deadline in 3 weeks flat!',
+      video: null
+    }
   ];
 
   const [index, setIndex] = useState(0);
   const goToTestimonial = i => setIndex(i);
 
-  // Case study data - only Thryve AI
+  // Case study data
   const caseStudies = [
     {
       id: 'thryve-ai',
@@ -27,6 +36,24 @@ export default function AgencyLandingPage() {
       image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
       techStack: ['OpenAI', 'Pinecone', 'Supabase', 'Next.js'],
       results: ['50% increase in user engagement', '30% improvement in learning outcomes']
+    },
+    {
+      id: 'buildflow',
+      title: 'BuildFlow',
+      subtitle: 'Construction Project Management Platform',
+      description: 'We built a comprehensive project management system with real-time updates, document sharing, and automated reporting capabilities.',
+      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      techStack: ['React', 'Node.js', 'MongoDB', 'AWS'],
+      results: ['40% reduction in project delays', '25% improvement in resource allocation']
+    },
+    {
+      id: 'finlaunch',
+      title: 'FinLaunch',
+      subtitle: 'Financial Services Marketplace',
+      description: 'We developed a streamlined MVP with core marketplace functionality, user profiles, and payment processing integration.',
+      image: 'https://images.unsplash.com/photo-1551288049-eeb83c1e5c16?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      techStack: ['React', 'Firebase', 'Stripe', 'Tailwind CSS'],
+      results: ['MVP delivered in 3 weeks', 'Successful seed round of $500,000']
     }
   ];
 
@@ -55,7 +82,7 @@ export default function AgencyLandingPage() {
                   transition={{ delay: 0.3, duration: 1 }}
                   className="mt-6 text-xl text-[#3a3a4f] max-w-3xl mx-auto"
                 >
-                  AI-Powered Business Development for Startups, Creatives, and Founders
+                  AI-Powered Product & App Development for Startups, Creatives, and Founders
                 </motion.p>
                 <motion.button
                   initial={{ opacity: 0, y: 20 }}
@@ -238,42 +265,42 @@ export default function AgencyLandingPage() {
               className="px-6 py-20 bg-white text-center relative"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-              <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Featured Case Study</h2>
-              <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Our Case Studies</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {caseStudies.map((study) => (
                   <Link to={`/case-study/${study.id}`} key={study.id}>
                     <motion.div
                       whileHover={{ scale: 1.03, y: -5 }}
-                      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
+                      className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col"
                     >
-                      <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
+                      <div className="h-48 overflow-hidden">
                         <img 
                           src={study.image} 
                           alt={study.title} 
                           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                         />
                       </div>
-                      <div className="p-8 md:w-1/2 flex flex-col justify-between">
-                        <div>
-                          <h3 className="text-2xl font-bold text-gray-800 mb-2">{study.title}</h3>
-                          <p className="text-indigo-600 font-medium mb-3">{study.subtitle}</p>
-                          <p className="text-gray-600 mb-6">{study.description}</p>
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {study.techStack.map((tech, index) => (
-                              <span 
-                                key={index}
-                                className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2">{study.title}</h3>
+                        <p className="text-indigo-600 font-medium mb-3">{study.subtitle}</p>
+                        <p className="text-gray-600 mb-4 flex-grow">{study.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {study.techStack.map((tech, index) => (
+                            <span 
+                              key={index}
+                              className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
-                        <div className="flex items-center text-indigo-600 font-medium">
-                          <span>View Case Study</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                          </svg>
+                        <div className="mt-auto">
+                          <div className="flex items-center text-indigo-600 font-medium">
+                            <span>View Case Study</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -297,7 +324,7 @@ export default function AgencyLandingPage() {
                   whileHover={{ scale: 1.03 }}
                   className="w-full h-96 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl shadow-lg overflow-hidden relative"
                 >
-                  <div className="absolute inset-0" style={{ backgroundImage: `url(${headshot})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-2xl font-bold">Kaya Jones</h3>

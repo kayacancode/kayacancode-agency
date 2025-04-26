@@ -11,7 +11,16 @@ export default function AgencyLandingPage() {
       text: 'Working with Kayacancode was the smartest move we made. The systems just work, and the execution was fast, flexible, and founder-friendly.',
       video: 'https://kayarjones901.wistia.com/medias/ka9fvaqeth'
     },
-  
+    {
+      author: 'Alex Rivera, CEO @ BuildFlow',
+      text: null,
+      video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    },
+    {
+      author: 'Jamie Tran, Product @ FinLaunch',
+      text: 'Kaya helped us hit our MVP deadline in 3 weeks flat!',
+      video: null
+    }
   ];
 
   const [index, setIndex] = useState(0);

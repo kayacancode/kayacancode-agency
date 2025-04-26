@@ -1,0 +1,141 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+export default function AgencyLandingPage() {
+  return (
+    <div className="min-h-screen bg-[#fdfcfa] text-gray-900 font-sans">
+      {/* Hero Section */}
+      <section className="px-6 py-32 bg-gradient-to-br from-black via-gray-900 to-black text-white text-center">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 1 }}
+          className="text-6xl font-bold max-w-5xl mx-auto leading-tight"
+        >
+          Build Fast. Launch Smart.
+        </motion.h1>
+        <p className="mt-6 text-xl max-w-3xl mx-auto">
+          AI-Powered Product & App Development for Startups, Creatives, and Founders
+        </p>
+        <button className="mt-10 px-8 py-4 bg-white text-black rounded-2xl font-semibold hover:bg-gray-200 transition">
+          Get Started
+        </button>
+      </section>
+
+      {/* Pain Point Section */}
+      
+      {/* Pain Point Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="px-6 py-24 bg-[#f6f7fb] text-center"
+      >
+        <h2 className="text-4xl font-bold mb-4 text-[#1f2937]">That Technical Co-founder You’ve Been Looking For</h2>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
+          Run your product on auto-pilot while we build your base MVP with speed, quality, and strategy.
+        </p>
+        <div className="max-w-4xl mx-auto text-left text-gray-800">
+          <h3 className="text-2xl font-semibold mb-2">The Problem:</h3>
+          <ul className="list-disc ml-6 space-y-2">
+            <li>Non-technical founders want to build, but lack time and a technical network.</li>
+            <li>Cheap labor overseas causes miscommunication and lacks transparency.</li>
+            <li>Founders want someone who feels like part of the team—genuine, invested, and local.</li>
+            <li>They crave authentic collaboration and a modern build process.</li>
+          </ul>
+        </div>
+        <div className="mt-10 text-lg text-gray-700">
+          
+          <p className="mt-4">We’re your MVP co-founder—focused on shipping lean, fast, and AI-powered from day one.</p>
+        </div>
+        <div className="mt-8 text-gray-600">
+          <p><strong>Who we serve:</strong> Early-stage startups and founders who need to prove a concept fast—with real AI integrations that make it stick.</p>
+        </div>
+      </motion.section>
+
+      {/* Plans Section */}
+      <section className="px-6 py-20 bg-white text-center">
+        <h2 className="text-4xl font-bold mb-12">Monthly Plans</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              title: 'Starter',
+              price: '$800/month',
+              description: 'Best for solopreneurs or microbusinesses.',
+              features: [
+                '10 dev hours/month',
+                '5-page landing site',
+                'Bug fixes & hosting',
+                'Async support',
+              ],
+            },
+            {
+              title: 'Pro',
+              price: '$1,600/month',
+              description: 'Ideal for early-stage startups building MVPs.',
+              features: [
+                '20 dev hours/month',
+                'Mobile MVP dev',
+                'Basic AI integrations',
+                '2 strategy sessions/month',
+              ],
+            },
+            {
+              title: 'Partner',
+              price: '$2,400/month',
+              description: 'For scaling teams needing full-stack builds.',
+              features: [
+                '40 dev hours/month',
+                'Advanced AI (RAG, Pinecone)',
+                'Full-stack mobile/web dev',
+                'Text + Slack support',
+              ],
+            },
+          ].map((plan, idx) => (
+            <div key={idx} className="bg-[#f9f9f9] shadow-lg rounded-2xl p-6 border hover:shadow-xl transition">
+              <h3 className="text-2xl font-semibold mb-2">{plan.title}</h3>
+              <p className="text-lg text-gray-600 mb-4">{plan.price}</p>
+              <p className="text-sm text-gray-500 mb-4">{plan.description}</p>
+              <ul className="text-left space-y-2 text-sm">
+                {plan.features.map((f, i) => (
+                  <li key={i} className="flex items-start">
+                    <span className="w-2 h-2 mt-2 mr-2 bg-black rounded-full" /> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Case Study Section */}
+      <section className="px-6 py-20 bg-[#ffffff] text-center">
+        <h2 className="text-4xl font-bold mb-10">Case Study: Thryve AI</h2>
+        <div className="max-w-4xl mx-auto text-lg text-gray-700">
+          <p>
+            We developed a complete AI-powered platform for Thryve AI — including a personalized eLearning engine, AI chatbot, brand-user matchmaking system, and user profile infrastructure. Our tech stack featured OpenAI, Pinecone, Supabase, and Next.js, delivering a scalable and intelligent experience from the ground up.
+          </p>
+        </div>
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="px-6 py-20 bg-gray-100 text-center">
+        <h2 className="text-4xl font-bold mb-10">What Clients Say</h2>
+        <div className="max-w-4xl mx-auto text-gray-800">
+          <blockquote className="italic mb-6">“Working with Kayacancode was the smartest move we made. The systems just work, and the execution was fast, flexible, and founder-friendly.”</blockquote>
+          <p className="font-semibold">— Kontji Anthony, Founder @ Youdle</p>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-6 py-24 bg-black text-white text-center">
+        <h2 className="text-4xl font-bold">Ready to Build?</h2>
+        <p className="mt-4 text-lg">Let’s take your idea from zero to launch.</p>
+        <button className="mt-6 px-6 py-3 bg-white text-black rounded-2xl font-semibold hover:bg-gray-200 transition">
+          Book a Call
+        </button>
+      </section>
+    </div>
+  );
+}
