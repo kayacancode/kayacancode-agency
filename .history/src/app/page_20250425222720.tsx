@@ -120,7 +120,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="mt-10 px-8 py-4 bg-[#4f46e5] text-white rounded-2xl font-semibold hover:bg-[#4338ca] transition shadow-lg hover:shadow-xl"
-            onClick={() => window.location.href = "mailto:kayarjones901@gmail.com?subject=Discovery%20Call"}
           >
             Get Started
           </motion.button>
