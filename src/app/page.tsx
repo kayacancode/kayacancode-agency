@@ -5,18 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
-
-// Add type declaration for Wistia player
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        'media-id': string;
-        aspect?: string;
-      }, HTMLElement>;
-    }
-  }
-}
+import WistiaPlayer from '../components/WistiaPlayer';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -47,11 +36,11 @@ export default function Home() {
     }
   ];
 
-  const mission = 'We can make the world a far better place by helping more companies leverage the technology that\'s available today, especially AI– but it\'s confusing & hard to figure out how to implement it, and it\'s our job to help businesses navigate this confusing tech landscape.';
+  const mission = 'We can make the world a far better place by helping more companies leverage the technology that&apos;s available today, especially AI– but it&apos;s confusing & hard to figure out how to implement it, and it&apos;s our job to help businesses navigate this confusing tech landscape.';
 
   const problems = [
     'AI can be overwhelming, too many tools, no clear transparency, no communication',
-    'Non-technical people want to build however they don\'t have the time and network',
+    'Non-technical people want to build however they don&apos;t have the time and network',
     'They try to go for cheap labor overseas however there is no transparency and easy communication',
     'People want that tech person apart of their team',
     'People want Genuine Authentic, Connection'
@@ -234,39 +223,29 @@ export default function Home() {
       </motion.section>
 
       {/* Testimonials Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-[#f8f9fb] text-center relative"
-      >
-        <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-4 text-[#1e1e2f]">Don't Just Take Our Word For It</h2>
-        <p className="text-xl text-gray-600 mb-12">Hear what our clients have to say about working with us</p>
-        
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white p-8 rounded-xl shadow-lg"
-          >
-            <div className="aspect-w-16 aspect-h-9 mb-6">
-              <div className="w-full h-full">
-                <wistia-player 
-                  media-id={testimonials[0].video} 
-                  aspect="1.7777777777777777"
-                  className="w-full h-full"
-                ></wistia-player>
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">What Our Clients Say</h2>
+          <p className="text-xl text-gray-600 text-center mb-12">Hear directly from our satisfied clients</p>
+          
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-lg shadow-lg p-8"
+            >
+              <div className="mb-6">
+                <WistiaPlayer videoId="ka9fvaqeth" />
               </div>
-            </div>
-            <p className="text-gray-700 mb-6 text-lg italic">"{testimonials[0].text}"</p>
-            <p className="text-[#4f46e5] font-semibold text-xl">{testimonials[0].author}</p>
-          </motion.div>
+              <div className="text-center">
+                <h3 className="text-2xl font-semibold mb-2">Will Hubbard</h3>
+                <p className="text-gray-600">CEO, Thryve AI</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Case Study Section */}
       <motion.section
@@ -346,7 +325,31 @@ export default function Home() {
         transition={{ duration: 1 }}
         className="px-6 py-20 bg-[#f8f9fb] text-center relative"
       >
-       
+        {/* Wistia Video Player */}
+        <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+          <div
+            className="wistia_responsive_padding"
+            style={{ padding: '56.25% 0 0 0', position: 'relative' }}
+          >
+            <div
+              className="wistia_responsive_wrapper"
+              style={{
+                height: '100%',
+                left: 0,
+                position: 'absolute',
+                top: 0,
+                width: '100%'
+              }}
+            >
+              {/* @ts-ignore */}
+              <wistia-player
+                data-video-id="abc123xyz"
+                data-options='{"playerColor":"54bbff","autoPlay":false}'
+                style={{ height: '100%', width: '100%' }}
+              />
+            </div>
+          </div>
+        </div>
       </motion.section>
 
       {/* Founder Section */}
@@ -383,7 +386,7 @@ export default function Home() {
               Kaya Jones is a results-driven software engineer with deep expertise in AI development, full-stack engineering, and data science. As the founder of Kayacancode, Kaya has led engineering efforts for companies like Thryve AI and Mosaic—building AI chatbots, eLearning systems, and smart matchmaking engines using OpenAI, Pinecone, Supabase, and Retrieval-Augmented Generation (RAG) frameworks.
             </p>
             <p className="text-lg text-gray-700">
-              With experience across industries—from NASA's data science labs to AutoZone's supply chain IT—Kaya brings both startup speed and enterprise-grade structure to product builds. Whether architecting scalable apps or leading strategy sessions, Kaya is obsessed with shipping high-quality software that moves fast and delivers value.
+              With experience across industries—from NASA&apos;s data science labs to AutoZone&apos;s supply chain IT—Kaya brings both startup speed and enterprise-grade structure to product builds. Whether architecting scalable apps or leading strategy sessions, Kaya is obsessed with shipping high-quality software that moves fast and delivers value.
             </p>
           </div>
         </div>
