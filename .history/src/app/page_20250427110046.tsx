@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Script from 'next/script';
 import WistiaPlayer from '../components/WistiaPlayer';
 import { usePathname } from 'next/navigation';
-import BusinessWorkflows from './business-workflows/page';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);

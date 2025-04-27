@@ -21,22 +21,16 @@ interface WistiaPlayerProps {
 
 const WistiaPlayer: React.FC<WistiaPlayerProps> = ({ videoId, options = {} }) => {
   useEffect(() => {
-    // Wait for Wistia to be available
-    const checkWistia = () => {
-      if (typeof window !== 'undefined' && window.Wistia?.api?.ready) {
-        window.Wistia.api.ready(() => {
-          const player = window.Wistia?.api.get(videoId);
-          if (player) {
-            player.initialize();
-          }
-        });
-      } else {
-        // If Wistia is not ready, check again in 100ms
-        setTimeout(checkWistia, 100);
-      }
-    };
-
-    checkWistia();
+    // Ensure Wistia is loaded
+    if (typeof window !== 'undefined' && window.Wistia) {
+      window.Wistia.api.ready(() => {
+        // Initialize the player
+        const player = window.Wistia.api.get(videoId);
+        if (player) {
+          player.initialize();
+        }
+      });
+    }
   }, [videoId]);
 
   if (!videoId) {
@@ -46,7 +40,7 @@ const WistiaPlayer: React.FC<WistiaPlayerProps> = ({ videoId, options = {} }) =>
   return (
     <div className="relative w-full aspect-video">
       <div
-        className={`wistia_embed wistia_async_${videoId} videoFoam=true`}
+        className="wistia_embed wistia_async_${videoId} videoFoam=true"
         style={{ height: '100%', position: 'relative' }}
       >
         <div
@@ -62,7 +56,10 @@ const WistiaPlayer: React.FC<WistiaPlayerProps> = ({ videoId, options = {} }) =>
             src={`https://fast.wistia.com/embed/medias/${videoId}`}
             title="Wistia Video Player"
             allow="autoplay; fullscreen"
-            style={{ border: 'none' }}
+            allowTransparency={true}
+            frameBorder="0"
+            scrolling="no"
+            name={`wistia_embed_${videoId}`}
             width="100%"
             height="100%"
           />

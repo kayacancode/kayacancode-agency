@@ -6,12 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import WistiaPlayer from '../components/WistiaPlayer';
-import { usePathname } from 'next/navigation';
-import BusinessWorkflows from './business-workflows/page';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -43,9 +40,10 @@ export default function Home() {
 
   const problems = [
     'AI can be overwhelming, too many tools, no clear transparency, no communication',
-    'Non-technical people want to build however they do not have the time and network',
+    'Non-technical people want to build however they don&apos;t have the time and network',
     'They try to go for cheap labor overseas however there is no transparency and easy communication',
-   
+    'People want that tech person apart of their team',
+    'People want Genuine Authentic, Connection'
   ];
 
   const solutions = [
@@ -83,25 +81,40 @@ export default function Home() {
     return null;
   }
 
-  if (pathname === '/business-workflows') {
-    return <BusinessWorkflows />;
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#f1f5ff] text-gray-900 font-sans">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/90 shadow-md py-4 px-8 flex justify-between items-center">
-        <div className="text-2xl font-bold text-[#4f46e5]">Kayacancode</div>
-        <div className="space-x-6 text-lg">
-          <Link href="/" className="hover:text-[#4f46e5] transition">Home</Link>
-          <Link href="/business-workflows" className="hover:text-[#4f46e5] transition">Business Workflows</Link>
+      {/* Hero Section */}
+      <section className="relative px-6 py-40 bg-gradient-to-tr from-[#dbeafe] via-[#c7d2fe] to-[#e0e7ff] text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-center bg-cover opacity-5 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white opacity-10 z-0"></div>
+        <div className="relative z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-extrabold text-[#1e1e2f] max-w-5xl mx-auto leading-tight"
+          >
+            Build Fast. Launch Smart.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="mt-6 text-xl text-[#3a3a4f] max-w-3xl mx-auto"
+          >
+            AI-Powered Business Development for Startups, Creatives, and Founders
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-10 px-8 py-4 bg-[#4f46e5] text-white rounded-2xl font-semibold hover:bg-[#4338ca] transition shadow-lg hover:shadow-xl"
+            onClick={() => window.location.href = "mailto:kayarjones901@gmail.com?subject=Discovery%20Call"}
+          >
+            Get Started
+          </motion.button>
         </div>
-      </nav>
-
-      {/* Home Content */}
-      <section className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <h1 className="text-5xl font-extrabold text-[#1e1e2f] mb-6">Welcome to Kayacancode</h1>
-        <p className="text-xl text-gray-700 max-w-2xl">Empowering founders with full-stack development and AI integration to ship smarter, faster, better.</p>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10"></div>
       </section>
 
       {/* Mission Section */}
@@ -308,7 +321,41 @@ export default function Home() {
         </div>
       </motion.section>
 
-    
+      {/* Image Gallery Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="px-6 py-20 bg-[#f8f9fb] text-center relative"
+      >
+        {/* Wistia Video Player */}
+        <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+          <div
+            className="wistia_responsive_padding"
+            style={{ padding: '56.25% 0 0 0', position: 'relative' }}
+          >
+            <div
+              className="wistia_responsive_wrapper"
+              style={{
+                height: '100%',
+                left: 0,
+                position: 'absolute',
+                top: 0,
+                width: '100%'
+              }}
+            >
+              {/* @ts-ignore */}
+              <wistia-player
+                data-video-id="abc123xyz"
+                data-options='{"playerColor":"54bbff","autoPlay":false}'
+                style={{ height: '100%', width: '100%' }}
+              />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Founder Section */}
       <motion.section
         initial={{ opacity: 0 }}

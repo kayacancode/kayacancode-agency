@@ -5,13 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
-import WistiaPlayer from '../components/WistiaPlayer';
-import { usePathname } from 'next/navigation';
-import BusinessWorkflows from './business-workflows/page';
+import WistiaPlayer from '@/components/WistiaPlayer';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -39,13 +36,14 @@ export default function Home() {
     }
   ];
 
-  const mission = 'We can make the world a far better place by helping more companies leverage the technology that is available today, especially AI– but it is confusing & hard to figure out how to implement it, and it is our job to help businesses navigate this confusing tech landscape.';
+  const mission = 'We can make the world a far better place by helping more companies leverage the technology that&apos;s available today, especially AI– but it&apos;s confusing & hard to figure out how to implement it, and it&apos;s our job to help businesses navigate this confusing tech landscape.';
 
   const problems = [
     'AI can be overwhelming, too many tools, no clear transparency, no communication',
-    'Non-technical people want to build however they do not have the time and network',
+    'Non-technical people want to build however they don&apos;t have the time and network',
     'They try to go for cheap labor overseas however there is no transparency and easy communication',
-   
+    'People want that tech person apart of their team',
+    'People want Genuine Authentic, Connection'
   ];
 
   const solutions = [
@@ -77,31 +75,46 @@ export default function Home() {
     }
   ];
 
-  const targetAudience = 'Early stage startups trying to get a product to market fast with AI Integrations. People trying to make a proof of concept fast. Soloprenuers trying to integreate workflows into their everyday life. Business owners trying to automate their business processes.';
+  const targetAudience = 'Early stage Companies trying to get a product to market fast with AI Integrations. People trying to make a proof of concept fast.';
 
   if (!mounted) {
     return null;
   }
 
-  if (pathname === '/business-workflows') {
-    return <BusinessWorkflows />;
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#f1f5ff] text-gray-900 font-sans">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/90 shadow-md py-4 px-8 flex justify-between items-center">
-        <div className="text-2xl font-bold text-[#4f46e5]">Kayacancode</div>
-        <div className="space-x-6 text-lg">
-          <Link href="/" className="hover:text-[#4f46e5] transition">Home</Link>
-          <Link href="/business-workflows" className="hover:text-[#4f46e5] transition">Business Workflows</Link>
+      {/* Hero Section */}
+      <section className="relative px-6 py-40 bg-gradient-to-tr from-[#dbeafe] via-[#c7d2fe] to-[#e0e7ff] text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-center bg-cover opacity-5 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white opacity-10 z-0"></div>
+        <div className="relative z-10">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-extrabold text-[#1e1e2f] max-w-5xl mx-auto leading-tight"
+          >
+            Build Fast. Launch Smart.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="mt-6 text-xl text-[#3a3a4f] max-w-3xl mx-auto"
+          >
+            AI-Powered Business Development for Startups, Creatives, and Founders
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-10 px-8 py-4 bg-[#4f46e5] text-white rounded-2xl font-semibold hover:bg-[#4338ca] transition shadow-lg hover:shadow-xl"
+            onClick={() => window.location.href = "mailto:kayarjones901@gmail.com?subject=Discovery%20Call"}
+          >
+            Get Started
+          </motion.button>
         </div>
-      </nav>
-
-      {/* Home Content */}
-      <section className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <h1 className="text-5xl font-extrabold text-[#1e1e2f] mb-6">Welcome to Kayacancode</h1>
-        <p className="text-xl text-gray-700 max-w-2xl">Empowering founders with full-stack development and AI integration to ship smarter, faster, better.</p>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10"></div>
       </section>
 
       {/* Mission Section */}
@@ -223,7 +236,7 @@ export default function Home() {
               className="bg-white rounded-lg shadow-lg p-8"
             >
               <div className="mb-6">
-                <WistiaPlayer videoId="ka9fvaqeth" />
+                <WistiaPlayer videoId="your-video-id-here" />
               </div>
               <div className="text-center">
                 <h3 className="text-2xl font-semibold mb-2">Will Hubbard</h3>
@@ -246,69 +259,99 @@ export default function Home() {
         <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Featured Case Study</h2>
         <div className="max-w-4xl mx-auto">
           {caseStudies.map((study) => (
-            <div key={study.id}>
-              <Link href={`/case-study/${study.id}`}>
-                <motion.div
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
-                >
-                  <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
-                    <Image 
-                      src={study.image} 
-                      alt={study.title} 
-                      width={800}
-                      height={600}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                      priority
-                    />
-                  </div>
-                  <div className="p-8 md:w-1/2 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{study.title}</h3>
-                      <p className="text-indigo-600 font-medium mb-3">{study.subtitle}</p>
-                      <p className="text-gray-600 mb-6">{study.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {study.techStack.map((tech, index) => (
-                          <span 
-                            key={index}
-                            className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center text-indigo-600 font-medium">
-                      <span>View Case Study</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-              
-              {study.website && (
-                <div className="mt-4 text-center">
-                  <a 
-                    href={study.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.706 2.142-.706 3.556 0 1.414.317 2.649.706 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.706-2.142.706-3.556 0-1.414-.317-2.649-.706-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.09 1.546.384 2.97.837 4.118A6.004 6.004 0 0015.917 11h-1.946zm-8.003 0H4.083a6.004 6.004 0 007.003 4.118C10.616 13.97 10.322 12.546 10.233 11z" clipRule="evenodd" />
-                    </svg>
-                    Visit Website
-                  </a>
+            <Link href={`/case-study/${study.id}`} key={study.id}>
+              <motion.div
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
+              >
+                <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
+                  <Image 
+                    src={study.image} 
+                    alt={study.title} 
+                    width={800}
+                    height={600}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    priority
+                  />
                 </div>
-              )}
-            </div>
+                <div className="p-8 md:w-1/2 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{study.title}</h3>
+                    <p className="text-indigo-600 font-medium mb-3">{study.subtitle}</p>
+                    <p className="text-gray-600 mb-6">{study.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {study.techStack.map((tech, index) => (
+                        <span 
+                          key={index}
+                          className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {study.website && (
+                      <a 
+                        href={study.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-indigo-600 hover:text-indigo-800 mb-4"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.706 2.142-.706 3.556 0 1.414.317 2.649.706 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.706-2.142.706-3.556 0-1.414-.317-2.649-.706-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.09 1.546.384 2.97.837 4.118A6.004 6.004 0 0015.917 11h-1.946zm-8.003 0H4.083a6.004 6.004 0 007.003 4.118C10.616 13.97 10.322 12.546 10.233 11z" clipRule="evenodd" />
+                        </svg>
+                        Visit Website
+                      </a>
+                    )}
+                  </div>
+                  <div className="flex items-center text-indigo-600 font-medium">
+                    <span>View Case Study</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </motion.section>
 
-    
+      {/* Image Gallery Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="px-6 py-20 bg-[#f8f9fb] text-center relative"
+      >
+        {/* Wistia Video Player */}
+        <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+          <div
+            className="wistia_responsive_padding"
+            style={{ padding: '56.25% 0 0 0', position: 'relative' }}
+          >
+            <div
+              className="wistia_responsive_wrapper"
+              style={{
+                height: '100%',
+                left: 0,
+                position: 'absolute',
+                top: 0,
+                width: '100%'
+              }}
+            >
+              {/* @ts-ignore */}
+              <wistia-player
+                data-video-id="abc123xyz"
+                data-options='{"playerColor":"54bbff","autoPlay":false}'
+                style={{ height: '100%', width: '100%' }}
+              />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Founder Section */}
       <motion.section
         initial={{ opacity: 0 }}

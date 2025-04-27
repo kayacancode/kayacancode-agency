@@ -62,7 +62,10 @@ const WistiaPlayer: React.FC<WistiaPlayerProps> = ({ videoId, options = {} }) =>
             src={`https://fast.wistia.com/embed/medias/${videoId}`}
             title="Wistia Video Player"
             allow="autoplay; fullscreen"
-            style={{ border: 'none' }}
+            allowTransparency={true}
+            frameBorder="0"
+            scrolling="no"
+            name={`wistia_embed_${videoId}`}
             width="100%"
             height="100%"
           />
