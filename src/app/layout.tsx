@@ -1,14 +1,11 @@
 import React from 'react'
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'Kayacancode - AI-Powered Business Development',
-  description: 'Empowering founders with full-stack development and AI integration to ship smarter, faster, better.',
+  title: 'Kaya Jones - Software Engineer',
+  description: 'Applied AI engineer and founder specializing in intelligent automation, context driven agent systems, and full stack SaaS development.',
 };
 
 export default function RootLayout({
@@ -22,7 +19,7 @@ export default function RootLayout({
         <Script src="https://fast.wistia.com/embed/medias-loading.js" strategy="beforeInteractive" />
         <Script src="https://fast.wistia.com/assets/external/E-v1.js" strategy="beforeInteractive" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className="font-serif antialiased">{children}</body>
     </html>
   );
-} 
+}

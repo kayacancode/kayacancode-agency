@@ -1,365 +1,127 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import Script from 'next/script';
-import WistiaPlayer from '../components/WistiaPlayer';
-import { usePathname } from 'next/navigation';
-import BusinessWorkflows from './business-workflows/page';
+import React from 'react';
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const testimonials = [
-    {
-      author: 'Will Hubbard, CEO @ Thryve AI',
-      text: 'Working with Kayacancode was the smartest move we made. The systems just work, and the execution was fast, flexible, and founder-friendly.',
-      video: 'ka9fvaqeth',
-      videoType: 'wistia'
-    }
-  ];
-
-  const caseStudies = [
-    {
-      id: 'thryve-ai',
-      title: 'Thryve AI',
-      subtitle: 'AI-Powered Learning Platform',
-      description: 'We developed a complete AI-powered platform for Thryve AI — including a personalized eLearning engine, AI chatbot, brand-user matchmaking system, and user profile infrastructure.',
-      image: '/thryve.png',
-      website: 'https://thryveai.ai',
-      techStack: ['OpenAI', 'Pinecone', 'Supabase', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Shadcn', 'GCP'],
-      results: ['Developed MVP in 3 months', 'Reduced course creation time by 75%', '50% increase in user engagement']
-    }
-  ];
-
-  const mission = 'We can make the world a far better place by helping more companies leverage the technology that is available today, especially AI– but it is confusing & hard to figure out how to implement it, and it is our job to help businesses navigate this confusing tech landscape.';
-
-  const problems = [
-    'AI can be overwhelming, too many tools, no clear transparency, no communication',
-    'Non-technical people want to build however they do not have the time and network',
-    'They try to go for cheap labor overseas however there is no transparency and easy communication',
-   
-  ];
-
-  const solutions = [
-    {
-      title: 'Feedback & Iteration',
-      features: [
-        'Weights user feedback for data-driven decisions',
-        'Tracks user analytics, clicks, and engagement metrics',
-        'Implements A/B testing for optimal performance'
-      ]
-    },
-    {
-      title: 'Technical Support',
-      features: [
-        'Dedicated chat support for technical issues',
-        'Regular check-ins and progress updates',
-        'Transparent communication throughout development'
-      ]
-    },
-    {
-      title: 'Rapid Development',
-      features: [
-        'MVP development in 3 months',
-        'AI Business Workflows in weeks',
-
-        'Agile methodology with continuous delivery',
-        'AI-powered development tools for efficiency'
-      ]
-    }
-  ];
-
-  const targetAudience = 'Early stage startups trying to get a product to market fast with AI Integrations. People trying to make a proof of concept fast. Soloprenuers trying to integreate workflows into their everyday life. Business owners trying to automate their business processes.';
-
-  if (!mounted) {
-    return null;
-  }
-
-  if (pathname === '/business-workflows') {
-    return <BusinessWorkflows />;
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f1f5ff] text-gray-900 font-sans">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/90 shadow-md py-4 px-8 flex justify-between items-center">
-        <div className="text-2xl font-bold text-[#4f46e5]">Kayacancode</div>
-        <div className="space-x-6 text-lg">
-          <Link href="/" className="hover:text-[#4f46e5] transition">Home</Link>
-          <Link href="/business-workflows" className="hover:text-[#4f46e5] transition">Business Workflows</Link>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white text-gray-900 px-6 py-12 md:py-20 max-w-3xl mx-auto font-serif">
+      <main className="space-y-12">
+        
+        {/* Header */}
+        <section className="space-y-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-black">Kaya Jones</h1>
+          <p className="text-xl text-gray-700">Software Engineer • Chicago, US</p>
+          <div className="text-lg text-gray-600">
+            Applied AI engineer and founder specializing in intelligent automation, context-driven agent systems, and full-stack SaaS development.
+          </div>
+        </section>
 
-      {/* Home Content */}
-      <section className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-        <h1 className="text-5xl font-extrabold text-[#1e1e2f] mb-6">Welcome to Kayacancode</h1>
-        <p className="text-xl text-gray-700 max-w-2xl">Empowering founders with full-stack development and AI integration to ship smarter, faster, better.</p>
-      </section>
-
-      {/* Mission Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-white text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Our Mission</h2>
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xl text-gray-700">{mission}</p>
-        </div>
-      </motion.section>
-
-      {/* Problem-Solution Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-[#f8f9fb] text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">The Problem</h2>
-        <div className="max-w-4xl mx-auto">
-          <ul className="space-y-4 text-left">
-            {problems.map((problem, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="flex items-start"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span className="text-lg text-gray-700">{problem}</span>
-              </motion.li>
-            ))}
+        {/* About */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-black border-b border-gray-200 pb-2">About Me</h2>
+          <ul className="list-disc list-inside space-y-3 text-lg text-gray-800 leading-relaxed ml-2">
+            <li>
+              Founder of <span className="font-bold">Forever 22 LLC</span>, delivering AI workflows, RAG systems, and automation pipelines for startups and venture firms.
+            </li>
+            <li>
+              Experienced in building internal research systems, semantic search tools, founder intelligence engines, and AI-augmented content systems.
+            </li>
+            <li>
+              Community builder hosting Chicago fireside chats, coworking sessions, and hackathons.
+            </li>
+            <li>
+              yapping on <span className="italic">Substack</span> covering AI, consumer tech, context engineering, and tech communites through my lense (basically whatever I am interested in).
+            </li>
           </ul>
-        </div>
-      </motion.section>
+        </section>
 
-      {/* Solution Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-white text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Our Solution</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              whileHover={{ scale: 1.03 }}
-              className="bg-[#f8f9fb] p-8 rounded-xl shadow-lg"
-            >
-              <h3 className="text-2xl font-semibold text-[#1e1e2f] mb-6">{solution.title}</h3>
-              <ul className="space-y-4 text-left">
-                {solution.features.map((feature, featureIndex) => (
-                  <motion.li
-                    key={featureIndex}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: featureIndex * 0.1, duration: 0.3 }}
-                    className="flex items-start"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-lg text-gray-700">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* Target Audience Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-white text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Who We Serve</h2>
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xl text-gray-700">{targetAudience}</p>
-        </div>
-      </motion.section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-8">What Our Clients Say</h2>
-          <p className="text-xl text-gray-600 text-center mb-12">Hear directly from our satisfied clients</p>
+        {/* Experience */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-bold text-black border-b border-gray-200 pb-2">Experience</h2>
           
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-lg shadow-lg p-8"
-            >
-              <div className="mb-6">
-                <WistiaPlayer videoId="ka9fvaqeth" />
-              </div>
-              <div className="text-center">
-                <h3 className="text-2xl font-semibold mb-2">Will Hubbard</h3>
-                <p className="text-gray-600">CEO, Thryve AI</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-20 bg-white text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold mb-10 text-[#1e1e2f]">Featured Case Study</h2>
-        <div className="max-w-4xl mx-auto">
-          {caseStudies.map((study) => (
-            <div key={study.id}>
-              <Link href={`/case-study/${study.id}`}>
-                <motion.div
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
-                >
-                  <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
-                    <Image 
-                      src={study.image} 
-                      alt={study.title} 
-                      width={800}
-                      height={600}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                      priority
-                    />
-                  </div>
-                  <div className="p-8 md:w-1/2 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{study.title}</h3>
-                      <p className="text-indigo-600 font-medium mb-3">{study.subtitle}</p>
-                      <p className="text-gray-600 mb-6">{study.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {study.techStack.map((tech, index) => (
-                          <span 
-                            key={index}
-                            className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center text-indigo-600 font-medium">
-                      <span>View Case Study</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-              
-              {study.website && (
-                <div className="mt-4 text-center">
-                  <a 
-                    href={study.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-indigo-600 hover:text-indigo-800"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.706 2.142-.706 3.556 0 1.414.317 2.649.706 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.706-2.142.706-3.556 0-1.414-.317-2.649-.706-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.09 1.546.384 2.97.837 4.118A6.004 6.004 0 0015.917 11h-1.946zm-8.003 0H4.083a6.004 6.004 0 007.003 4.118C10.616 13.97 10.322 12.546 10.233 11z" clipRule="evenodd" />
-                    </svg>
-                    Visit Website
-                  </a>
-                </div>
-              )}
+          <div className="space-y-2">
+            <div className="flex justify-between items-baseline flex-wrap">
+              <h3 className="text-xl font-bold text-black">Betaworks</h3>
+              <span className="text-gray-600 font-medium">Applied AI Consultant (Jun 2025 – Present)</span>
             </div>
-          ))}
-        </div>
-      </motion.section>
-
-    
-      {/* Founder Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="px-6 py-24 bg-[#f8f9fb] text-center relative"
-      >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h2 className="text-4xl font-bold text-[#1e1e2f] mb-12">Meet the Founder</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left">
-          <motion.div 
-            whileHover={{ scale: 1.03 }}
-            className="w-full h-96 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl shadow-lg overflow-hidden relative"
-          >
-            <Image
-              src="/kayajonesheadshot.jpeg"
-              alt="Kaya Jones"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <h3 className="text-2xl font-bold">Kaya Jones</h3>
-              <p className="text-sm opacity-90">Founder & Lead Developer</p>
-            </div>
-          </motion.div>
-          <div className="bg-white p-8 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-semibold text-[#1e1e2f] mb-4">Kaya Jones</h3>
-            <p className="text-lg text-gray-700 mb-4">
-              Kaya Jones is a results-driven software engineer with deep expertise in AI development, full-stack engineering, and data science. As the founder of Kayacancode, Kaya has led engineering efforts for companies like Thryve AI and Mosaic—building AI chatbots, eLearning systems, and smart matchmaking engines using OpenAI, Pinecone, Supabase, and Retrieval-Augmented Generation (RAG) frameworks.
-            </p>
-            <p className="text-lg text-gray-700">
-              With experience across industries—from NASA&apos;s data science labs to AutoZone&apos;s supply chain IT—Kaya brings both startup speed and enterprise-grade structure to product builds. Whether architecting scalable apps or leading strategy sessions, Kaya is obsessed with shipping high-quality software that moves fast and delivers value.
-            </p>
+            <ul className="list-disc list-inside space-y-1 text-gray-800 ml-2">
+              <li>Designed founder research intelligence systems aggregating multi-source structured and unstructured data.</li>
+              <li>Developed enrichment pipelines using Google Sheets, Airtable, Zapier, RAG, and MCP-powered agents.</li>
+              <li>Evaluated multiple MCP frameworks, conducting stress tests and workflow benchmarks.</li>
+              <li>Prototyped internal AI tools for due diligence, sourcing acceleration, and context retrieval.</li>
+              <li>Ran portfolio product analyses, identifying gaps and recommending workflow-driven improvements.</li>
+            </ul>
           </div>
-        </div>
-      </motion.section>
 
-      {/* Footer Section */}
-      <footer className="bg-[#1e1e2f] text-white px-6 py-12 text-center relative">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4f46e5] via-[#818cf8] to-[#4f46e5]"></div>
-        <h3 className="text-2xl font-bold mb-4">Kayacancode</h3>
-        <p className="mb-6 text-gray-300">Empowering founders with full-stack development and AI integration to ship smarter, faster, better.</p>
-        <div className="flex justify-center space-x-6 text-sm text-gray-400">
-          <a href="https://www.linkedin.com/in/kayarjones/" className="hover:text-white transition">LinkedIn</a>
-          <a href="mailto:kayarjones901@gmail.com" className="hover:text-white transition">Email</a>
-        </div>
-        <p className="mt-8 text-xs text-gray-500">© {new Date().getFullYear()} Kayacancode. All rights reserved.</p>
-      </footer>
+          <div className="space-y-2">
+            <div className="flex justify-between items-baseline flex-wrap">
+              <h3 className="text-xl font-bold text-black">Forever 22 LLC</h3>
+              <span className="text-gray-600 font-medium">Founder (2024 – Present)</span>
+            </div>
+            <ul className="list-disc list-inside space-y-1 text-gray-800 ml-2">
+              <li>Architect and deliver intelligent automation systems and AI SaaS platforms for startups and VC teams.</li>
+              <li>Built <strong>Thryve AI</strong> (eLearning + AI matchmaking), <strong>YoudleGPT</strong> (automated grocery content engine), and <strong>Sunday Money’s</strong> fantasy automation stack.</li>
+              <li>Designed and deployed RAG pipelines, semantic search workflows, AI chatbots, and recommendation engines.</li>
+              <li>Developed founder intelligence pipelines reducing manual research time by 90% through automated enrichment.</li>
+              <li>Converted engineering consulting into subscription-based automation offerings across verticals.</li>
+            </ul>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex justify-between items-baseline flex-wrap">
+              <h3 className="text-xl font-bold text-black">AutoZone</h3>
+              <span className="text-gray-600 font-medium">Supply Chain Software Engineering Intern (Jun - Aug 2024)</span>
+            </div>
+            <ul className="list-disc list-inside space-y-1 text-gray-800 ml-2">
+              <li>Built a bulk upload shipment workflow using React, Redux, and Spring Boot.</li>
+              <li>Developed backend POST endpoints and label printing automation.</li>
+              <li>Delivered iterative improvements through Agile sprints.</li>
+            </ul>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex justify-between items-baseline flex-wrap">
+              <h3 className="text-xl font-bold text-black">NASA Glenn Research Center</h3>
+              <span className="text-gray-600 font-medium">Data Science Intern (2021 – 2022)</span>
+            </div>
+            <ul className="list-disc list-inside space-y-1 text-gray-800 ml-2">
+              <li>Developed a BERT-based Q&A bot integrated with a Neo4j knowledge graph.</li>
+              <li>Built dashboards and REST/GraphQL APIs for mission data visualization.</li>
+              <li>Automated documentation and code generation workflows.</li>
+              <li>Explored graph-based NLP and semantic search prototypes.</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-black border-b border-gray-200 pb-2">Education</h2>
+          <div>
+            <h3 className="text-xl font-bold text-black">Illinois Institute of Technology</h3>
+            <p className="text-gray-700">B.S. Computer Science (May 2025)</p>
+            <ul className="list-disc list-inside mt-2 text-gray-800 ml-2">
+              <li>NCAA D3 Basketball Captain</li>
+              <li>President, Black Student Athlete Association</li>
+              <li>College of Computing Student Council</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-black border-b border-gray-200 pb-2">Contact</h2>
+          <p className="text-lg text-gray-800">
+            Email: <a href="mailto:kayarjones901@gmail.com" className="text-blue-800 hover:underline font-medium">kayarjones901@gmail.com</a>
+          </p>
+          <div className="flex space-x-4 pt-2">
+             <a href="https://www.linkedin.com/in/kayarjones/" className="text-blue-800 hover:underline font-medium">LinkedIn</a>
+             <a href="https://x.com/kayacancode" className="text-blue-800 hover:underline font-medium">Twitter (X)</a>
+             <a href="https://github.com/kayacancode" className="text-blue-800 hover:underline font-medium">GitHub</a> 
+             <a href="https://substack.com/@kayajones" className="text-blue-800 hover:underline font-medium">Substack</a>
+          </div>
+        </section>
+
+      </main>
     </div>
   );
-} 
+}
