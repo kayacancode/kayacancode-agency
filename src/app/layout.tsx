@@ -1,11 +1,10 @@
 import React from 'react'
 import type { Metadata } from 'next';
 import './globals.css';
-import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Kaya Jones - Software Engineer',
-  description: 'Applied AI engineer and founder specializing in intelligent automation, context driven agent systems, and full stack SaaS development.',
+  title: 'Kaya Jones',
+  description: 'Applied AI engineer and founder building intelligent automation systems.',
 };
 
 export default function RootLayout({
@@ -15,11 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <Script src="https://fast.wistia.com/embed/medias-loading.js" strategy="beforeInteractive" />
-        <Script src="https://fast.wistia.com/assets/external/E-v1.js" strategy="beforeInteractive" />
-      </head>
-      <body className="font-serif antialiased">{children}</body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
